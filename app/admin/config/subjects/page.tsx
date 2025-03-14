@@ -12,26 +12,46 @@ export default function SubjectsConfig() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-      <h1 className="text-2xl font-bold mb-4">Configure Subjects</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded shadow-md w-96">
-        <input
-          {...register("subject", { required: "Subject is required" })}
-          placeholder="Subject (e.g., Math, Science)"
-          className="mb-4 p-2 border rounded w-full"
-        />
-        {errors.subject && (
-          <p className="text-red-500 text-sm">{(errors.subject as FieldError).message}</p>
-        )}
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full">
-          Add Subject
-        </button>
-      </form>
-      <div className="mt-8 bg-white p-6 rounded shadow-md w-96">
-        <h2 className="text-xl font-bold mb-4">Current Subjects</h2>
-        <ul>
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center p-10">
+      {/* Header */}
+      <h1 className="text-3xl font-light text-blue-700 mb-8 tracking-wide">Configure Subjects</h1>
+
+      {/* Form Card */}
+      <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+        <h2 className="text-lg font-light text-gray-600 mb-6 tracking-wide">Add a New Subject</h2>
+      
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Input Field */}
+          <div>
+            <input
+              {...register("subject", { required: "Subject is required" })}
+              placeholder="Subject (e.g., Math, Science)"
+              className="w-full p-3 border border-gray-300 rounded-lg shadow-sm text-gray-700 focus:ring-2 focus:ring-blue-400 outline-none transition-all"
+            />
+            {errors.subject && (
+              <p className="text-red-500 text-sm mt-2">{(errors.subject as FieldError).message}</p>
+            )}
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-light py-3 rounded-lg shadow-md transition-all"
+          >
+            Add Subject
+          </button>
+        </form>
+      </div>
+
+      {/* Current Subjects List */}
+      <div className="mt-10 bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+        <h2 className="text-lg font-light text-gray-600 mb-6 tracking-wide">Current Subjects</h2>
+        <ul className="space-y-4">
           {subjects.map((subject, index) => (
-            <li key={index} className="mb-2">
+            <li
+              key={index}
+              className="p-3 bg-gray-100 rounded-lg text-gray-700 text-sm shadow-sm"
+            >
               {subject}
             </li>
           ))}

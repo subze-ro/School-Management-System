@@ -35,31 +35,69 @@ export default function Login() {
     }
   };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded shadow-md w-96">
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
-        <input
-          {...register("email", { required: "Email is required" })}
-          placeholder="Email"
-          className="mb-4 p-2 border rounded w-full"
-        />
-        {errors.email && (
-          <p className="text-red-500 text-sm">{(errors.email as FieldError).message}</p>
-        )}
-        <input
-          {...register("password", { required: "Password is required" })}
-          type="password"
-          placeholder="Password"
-          className="mb-4 p-2 border rounded w-full"
-        />
-        {errors.password && (
-          <p className="text-red-500 text-sm">{(errors.password as FieldError).message}</p>
-        )}
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full">
+return (
+  <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div className="bg-white p-8 rounded-2xl shadow-lg w-96 border border-gray-200">
+      <div className="flex justify-center mb-4">
+        <div className="bg-blue-600 text-white p-2 rounded-full">
+          {/* You can replace this with an actual logo */}
+          
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-semibold text-gray-900 text-center mb-2">
+        Welcome back
+      </h2>
+      <p className="text-gray-500 text-center mb-6">Login to your account below</p>
+
+     
+
+      <div className="relative text-center mb-4">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-gray-300"></div>
+        </div>
+        
+      </div>
+
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <div>
+          <label className="text-gray-700 text-sm font-medium">Email</label>
+          <input
+            {...register("email", { required: "Email is required" })}
+            placeholder="Enter your email"
+            className="w-full p-3 rounded-lg bg-gray-100 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 outline-none border border-gray-300 focus:border-blue-400"
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">{(errors.email as FieldError).message}</p>
+          )}
+        </div>
+
+        <div>
+          <label className="text-gray-700 text-sm font-medium">Password</label>
+          <input
+            {...register("password", { required: "Password is required" })}
+            type="password"
+            placeholder="Enter your password"
+            className="w-full p-3 rounded-lg bg-gray-100 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 outline-none border border-gray-300 focus:border-blue-400"
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm mt-1">{(errors.password as FieldError).message}</p>
+          )}
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 shadow-md"
+        >
           Login
         </button>
       </form>
+
+      <p className="text-gray-500 text-sm text-center mt-4">
+        Don’t have an account? <a href="#" className="text-blue-600 hover:text-blue-500 font-medium">Sign up for free</a>
+      </p>
     </div>
-  );
+  </div>
+);
+
 }
